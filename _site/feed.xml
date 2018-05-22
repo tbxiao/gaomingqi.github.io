@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-05-22T11:57:45-07:00</updated><id>http://localhost:4000/</id><title type="html">Mingqi’s Home</title><subtitle>personal description</subtitle><author><name>Mingqi Gao</name><email>im.mingqi@gmail.com</email></author><entry><title type="html">Note: How to include mathematics in Github pages by MathJax</title><link href="http://localhost:4000/posts/2017/08/blog-post-4/" rel="alternate" type="text/html" title="Note: How to include mathematics in Github pages by MathJax" /><published>2017-08-08T00:00:00-07:00</published><updated>2017-08-08T00:00:00-07:00</updated><id>http://localhost:4000/posts/2017/08/blog-post-4</id><content type="html" xml:base="http://localhost:4000/posts/2017/08/blog-post-4/">&lt;p&gt;Here some tips about using MathJax to include mathematics in Github blog is provided. MathJax is an open-source JavaScript display engine for LaTeX, MathML, and AsciiMath notation that works in all modern browsers. The documentation of MathJax can be found &lt;a href=&quot;http://docs.mathjax.org/en/latest/index.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;style&gt;
+pre{font-family: courier; font-size: 80%; border:solid 1px ##cccccc; background:#f5f5f5f5;}
+code{font-family: courier; border:solid 1px ##cccccc; background:#f5f5f5f5;}
+&lt;/style&gt;
+
+&lt;h2 id=&quot;mathjax-configuration&quot;&gt;MathJax Configuration&lt;/h2&gt;
+
+&lt;p&gt;There are two methods to access MathJax:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use the copy of MathJax available from the content distributed network (CDN) service (&lt;strong&gt;the easiest way&lt;/strong&gt;);&lt;/li&gt;
+  &lt;li&gt;Download and install a copy of MathJax on your own server, then use it locally (with no need for network access).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Taking an example of academicpages, to display mathematics in our page through CDN, the link of a free CDN provider should be put into the file “_include/head.html”, such as the &lt;strong&gt;cdnjs&lt;/strong&gt; shown below:&lt;/p&gt;
+&lt;pre&gt;&amp;lt;script type=&quot;text/javascript&quot; async
+  src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML&quot;&amp;gt;
+&amp;lt;/script&amp;gt;&lt;/pre&gt;
+&lt;p&gt;where the parameter behind &lt;code&gt;=&lt;/code&gt; is used to specify a pre-compiled configuration file. Here &lt;code&gt;TeX-MML-AM_CHTML&lt;/code&gt; means that the main components of MathJax have been loaded, such as TeX, MathML, and AsciiMath preprocessors and input processors, and the CommonHTML output processor definitions etc. Other parameters and their meanings can be found &lt;a href=&quot;http://docs.mathjax.org/en/latest/config-files.html#common-configurations&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For Tex and Latex in MathJax, the process of displaying mathematics in web pages can be divided into three stages:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Find and mark the TeX notation within web pages (indicated by math delimiters) through the &lt;em&gt;tex2jax preprocessor&lt;/em&gt;;&lt;/li&gt;
+  &lt;li&gt;Convert the TeX notation into MathJax’s internal format using &lt;em&gt;TeX input processor&lt;/em&gt;;&lt;/li&gt;
+  &lt;li&gt;Use the &lt;em&gt;MathJax’s output processor&lt;/em&gt; to displays it in web pages.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;delimiters-setting&quot;&gt;Delimiters Setting&lt;/h2&gt;
+&lt;p&gt;In terms of inline mathematics and displayed equations, whose delimiters can be defined by including a configuration script like below:&lt;/p&gt;
+&lt;pre&gt;&amp;lt;script type=&quot;text/x-mathjax-config&quot;&amp;gt;
+	MathJax.Hub.Config({
+	  tex2jax: {
+	    inlineMath: [ ['$','$'], ['\\(','\\)'] ], 
+	    displayMath: [ ['$$','$$'], ['\\[','\\]'] ]
+	  }
+	});
+&amp;lt;/script&amp;gt;&lt;/pre&gt;
+&lt;p&gt;Under the definition shown above, we can display inline formula $y = ax + b$ by &lt;code&gt;$y = ax + b$&lt;/code&gt; or &lt;code&gt;\\(y = ax + b\\)&lt;/code&gt;, and displayed equation:
+\[y = ax + b\]
+by &lt;code&gt;$$y = ax + b$$&lt;/code&gt; or &lt;code&gt;\\[y = ax + b\\]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NOTE&lt;/code&gt;: By default, the math delimiters &lt;code&gt;\\(...\\)&lt;/code&gt;, &lt;code&gt;\\[...\\]&lt;/code&gt; and &lt;code&gt;$$...$$&lt;/code&gt; have been defined by the &lt;em&gt;tex2jax preprocessor&lt;/em&gt;. The delimiter &lt;code&gt;$...$&lt;/code&gt; is ignored, this is because dollar signs appear too often in non-mathematical settings, which could cause some text to be treated as mathematics unexpectedly. Thus if you are not planning to use single-dollor signs for determining inline mathematics, &lt;strong&gt;the script above is not required&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;More configurations about &lt;em&gt;tex2jax Preprocessor&lt;/em&gt; can be found &lt;a href=&quot;http://docs.mathjax.org/en/latest/options/preprocessors/tex2jax.html#configure-tex2jax&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content><author><name>Mingqi Gao</name><email>im.mingqi@gmail.com</email></author><category term="mathematical formula in browsers" /><category term="MathJax" /><category term="Latex" /><summary type="html">Here some tips about using MathJax to include mathematics in Github blog is provided. MathJax is an open-source JavaScript display engine for LaTeX, MathML, and AsciiMath notation that works in all modern browsers. The documentation of MathJax can be found here.</summary></entry><entry><title type="html">Factorization based Active Contour Model (FACM)</title><link href="http://localhost:4000/posts/2017/04/blog-post-3/" rel="alternate" type="text/html" title="Factorization based Active Contour Model (FACM)" /><published>2017-04-20T00:00:00-07:00</published><updated>2017-04-20T00:00:00-07:00</updated><id>http://localhost:4000/posts/2017/04/blog-post-3</id><content type="html" xml:base="http://localhost:4000/posts/2017/04/blog-post-3/">&lt;p&gt;As a sub-problem of image segmentation, texture segmentation also has important research significance. In this blog, the idea of factorization based active contour model (FACM) is provided. Different with other ACMs, Here we integrated a new metric into the energy functional, which can assess the probability that a pixel belongs to each component region more accurately.&lt;/p&gt;
+
+&lt;h2 id=&quot;method&quot;&gt;Method&lt;/h2&gt;
+&lt;p&gt;FACM consists of two terms: a factorization based fitting energy \({\varepsilon _F}\) for distinguishing object and background, and a regularization term \({\varepsilon _R}\) &lt;sup&gt;&lt;strong&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;[1]&lt;/font&gt;&lt;/strong&gt;&lt;/sup&gt; to eliminating re-initialization process. The main procedures of this model are shown as below:&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/files/mdimages/post3_fig1.jpg&quot; width=&quot;99%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Figure 1&lt;/strong&gt;. The diagram of FACM. During the preliminary stage, the feature matrix is achieved to improve the separability of each region, by mixing serveral kinds of texture features. And then, an initial contour will be given to start the segmentation process. By computing the representative features of each region and their weights at each pixel, the active contour is updated repeatedly until convergence.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To describe the texture information of given image more accurately, we compute the local spectral histogram &lt;sup&gt;&lt;strong&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;[2]&lt;/font&gt;&lt;/strong&gt;&lt;/sup&gt; from the given image  \(u_0:\Omega \to \mathbb{R}\). Firstly, a set of feature maps will be computed from \(u_0\) through convolution. And then, for each pixel \((x,y) \in \Omega\), its spectral histogram is obtained by concatenating several histograms computed within \(w\times w\) window in each feature map:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\boldsymbol{h} _{w}(x,y)= \left[\  \boldsymbol{h} _{w,1}(x,y)^T \right.,\boldsymbol{h} _{w,2}(x,y)^T,\text{...}\left. {,\boldsymbol{h} _{w,K}(x,y)^T} \right]^T&lt;/script&gt;
+
+&lt;p&gt;Let \(\boldsymbol{h}_w(x,y)\) be an \(M\times 1\) vector, we integrate all of which into a \(M\times N\) matrix \(\mathbf{Y}\) to facilitate the subsequent process, where \(N\) denotes the number of pixels in \(u_0\). To form a general segmentation model, we assume that \(u_0\) consists of 2 regions(\(\Omega_1 \text{and}\  \Omega_2\)) whose texture features are even-distributed. For each pixel in \(u_0\), due to its feature histogram is computed accumulatively, which can be regarded as the linear combination of the representative histograms of each region, with the weights ranging from 0 to 1. According to feactorization theory &lt;sup&gt;&lt;strong&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;[2]&lt;/font&gt;&lt;/strong&gt;&lt;/sup&gt;, the feature matrix can be decomposed as following form:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{Y}=\mathbf{R}\times \mathbf{W}+n&lt;/script&gt;
+
+&lt;p&gt;where \(\mathbf{R}=[ \boldsymbol{r}_1, \boldsymbol{r}_2]\) is an \(M\times 2\) matrix of representative histograms, containing the average histograms of \(\Omega_1\) and \(\Omega_2\). \(\mathbf{W}\) is a \(2\times N\) matrix, containing the weights of two regions in each pixel. \(n\) means the additional noise.&lt;/p&gt;
+
+&lt;p&gt;In terms of weights, it can be reasoned that for each pixel, the closer it gets to a certain region, the higher weight of corresponding region at this pixel is. Hence we set a fitting term encouraging the weights of \(\Omega_1\) and \(\Omega_2\) at the pixels within them reach the highest, respectively:&lt;/p&gt;
+
+&lt;p&gt;\[\begin{align}
+{\varepsilon_F}(\mathbf{R},\phi ) 
+&amp;amp;=\int_\Omega { {(1- \mathbf{W_1}(x,y))} { H_\varepsilon(\phi (x,y))} dxdy} \\&lt;br /&gt;
+&amp;amp;+\int_\Omega { {(1- \mathbf{W_2}(x,y))} {(1 - H_\varepsilon(\phi (x,y)))} dxdy}
+\end{align}\]&lt;/p&gt;
+
+&lt;p&gt;where \(\mathbf{W}_1\) and \(\mathbf{W}_2\) mean two matrices having the same size with \(u_0\), referring to the weights of \(\Omega_1\) and \(\Omega_2\) at each pixel. From the fitting term, it is clear that the value of this term will reach its minimum only when the contour converges to the object boundary. In this equation, different regions are implicitly represented by level set method. For more details about this, please read my &lt;a href=&quot;https://gaomingqi.github.io/posts/2016/12/blog-post-1/&quot;&gt;former blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To solve the weight matrix \(\mathbf{W}_1\) and \(\mathbf{W}_2\), the least squares method is used:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbf{W} = [{\boldsymbol{w}_1}^T,{\boldsymbol{w}_2}^T]^T = {(\mathbf{R}{\mathbf{R}^T})^{ - 1}}{\mathbf{R}^T}\mathbf{Y}&lt;/script&gt;
+
+&lt;p&gt;where \( \boldsymbol{w}_1\) and \(\boldsymbol{w}_2\) are 2 row vectors. To facilitate the description of the weight of representative features in each pixel, these are converted into two matrices \(\mathbf{W}_1\) and \(\mathbf{W}_2\). By integrating the regularization term , the final energy functional is defined as below:&lt;/p&gt;
+
+&lt;p&gt;\[ \begin{align}
+\mathcal{F}^{FACM}(\mathbf{R},\phi )
+&amp;amp;=\mu \cdot \int_\Omega { {(1- \mathbf{W_1}(x,y))} { H_\varepsilon(\phi (x,y))} dxdy} \\&lt;br /&gt;
+&amp;amp;+\mu \cdot \int_\Omega { {(1- \mathbf{W_2}(x,y))} {(1 - H_\varepsilon(\phi (x,y)))} dxdy}\\&lt;br /&gt;
+&amp;amp;+ \nu \cdot \int_\Omega  {\frac{1}{2}{ {(|\nabla \phi (x,y)| - 1)}^2}dxdy}
+					\end{align}
+\]&lt;/p&gt;
+
+&lt;p&gt;where \(\mu\) and \(\nu\) are positive parameters adjusting the impact of each energy term on segmentation results. The final object boundary can be achieved by the gradient descent with respect to \(\phi\).&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/files/mdimages/post3_fig21.gif&quot; width=&quot;32%&quot; /&gt;
+&lt;img src=&quot;/files/mdimages/post3_fig22.gif&quot; width=&quot;32%&quot; /&gt;
+&lt;img src=&quot;/files/mdimages/post3_fig23.gif&quot; width=&quot;32%&quot; /&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Figure 2&lt;/strong&gt;. The evolution process of FACM. From left to right: the active contours in different stages when segmenting images with noise, inhomogeneous illumination and complex textures.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;From the segmentation process shown above, it is clear that the object boundary can be achieved within very limited iterations, which is mainly attributed to the rich texture features and factorization-based fitting term.&lt;/p&gt;
+
+&lt;h2 id=&quot;code-available&quot;&gt;Code available&lt;/h2&gt;
+&lt;p&gt;The code of FACM for texture segmentation is provided &lt;a href=&quot;https://github.com/gaomingqi/FACM&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;here&lt;/font&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NOTE&lt;/code&gt;: To use this model as academic purpose, please cite the following paper:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://ieeexplore.ieee.org/document/7533173/&quot;&gt;A factorization based active contour model for texture segmentation&lt;/a&gt;,&lt;br /&gt;
+Mingqi Gao, Hengxin Chen, Shenhai Zheng, Bin Fang. &lt;strong&gt;IEEE ICIP&lt;/strong&gt;, 2016.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;main-references&quot;&gt;Main References&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;[1] &lt;a href=&quot;http://ieeexplore.ieee.org/document/7127013/&quot;&gt;Factorization-based texture segmentation&lt;/a&gt;, Jiangye Yuan, Deliang Wang, and Anil M Cheriyadat. &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2015.&lt;br /&gt;
+[2] &lt;a href=&quot;http://ieeexplore.ieee.org/document/1467299/&quot;&gt;Level Set Evolution Without Re-initialization: A New Variational Formulation&lt;/a&gt;, Chunming Li, Chenyang Xu, Changfeng Gui, and Martin D. Fox. &lt;strong&gt;IEEE CVPR&lt;/strong&gt;, 2005.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Mingqi Gao</name><email>im.mingqi@gmail.com</email></author><category term="factorization based model" /><category term="level set method" /><category term="active contour model" /><category term="image segmentation" /><summary type="html">As a sub-problem of image segmentation, texture segmentation also has important research significance. In this blog, the idea of factorization based active contour model (FACM) is provided. Different with other ACMs, Here we integrated a new metric into the energy functional, which can assess the probability that a pixel belongs to each component region more accurately.</summary></entry><entry><title type="html">List of papers related to Active Contour Models</title><link href="http://localhost:4000/posts/2017/01/blog-post-2/" rel="alternate" type="text/html" title="List of papers related to Active Contour Models" /><published>2017-01-02T00:00:00-08:00</published><updated>2017-01-02T00:00:00-08:00</updated><id>http://localhost:4000/posts/2017/01/blog-post-2</id><content type="html" xml:base="http://localhost:4000/posts/2017/01/blog-post-2/">&lt;p&gt;Here some well-designed and suggestive papers in the field of Active Contour Model for image segmentation are provided, organized according to &lt;strong&gt;all types of models&lt;/strong&gt;, including learning-based models, edge-baesd models, region-based models, shape-prior-based models and globally-optimized models.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning-based-models&quot;&gt;Learning-based Models&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;[1] &lt;a href=&quot;http://ieeexplore.ieee.org/document/8099548/&quot;&gt;Deep Level Sets for Salient Object Detection&lt;/a&gt;, Ping Hu, Bing Shuai, Jun Liu, and Gang Wang, &lt;strong&gt;IEEE CVPR&lt;/strong&gt;, 2017.&lt;br /&gt;
+[2] &lt;a href=&quot;https://arxiv.org/abs/1607.05074&quot;&gt;Deep Active Contours&lt;/a&gt;, Christian Rupprecht, Elizabeth Huaroc, Maximilian Baust, and Nassir Navab, &lt;strong&gt;arXiv preprint arXiv:1607.05074&lt;/strong&gt;, 2016.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;edge-based-models&quot;&gt;Edge-based Models&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;[1] &lt;a href=&quot;http://ieeexplore.ieee.org/abstract/document/5557813/&quot;&gt;Distance Regularized Level Set Evolution and Its Application to Image Segmentation&lt;/a&gt;, Chunming Li, Chenyang Xu, Changfeng Gui, and Martin D. Fox, &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2010. &lt;a href=&quot;http://www.imagecomputing.org/~cmli/DRLSE/&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website &amp;amp; code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[2] &lt;a href=&quot;http://ieeexplore.ieee.org/document/5439007/&quot;&gt;Decoupled Active Contour (DAC) for Boundary Detection&lt;/a&gt;, Akshaya K. Mishra, Paul W. Fieguth, and David A. Clausi, &lt;strong&gt;IEEE Transactions on Pattern Analysis and Machine Intelligence&lt;/strong&gt;, 2011. &lt;a href=&quot;https://uwaterloo.ca/vision-image-processing-lab/research-demos/decoupled-active-contours&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website&lt;/font&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;region-based-models&quot;&gt;Region-based Models&lt;/h2&gt;
+&lt;h3 id=&quot;intensity-descriptor&quot;&gt;Intensity descriptor&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;[1] &lt;a href=&quot;http://ieeexplore.ieee.org/abstract/document/902291/&quot;&gt;Active Contours Without Edges&lt;/a&gt;, Tony F. Chan, and Luminita A. Vese, &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2001.&lt;a href=&quot;https://gaomingqi.github.io/posts/2016/12/blog-post-1/&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website &amp;amp; code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[2] &lt;a href=&quot;http://ieeexplore.ieee.org/document/4623242/&quot;&gt;Minimization of Region-Scalable Fitting Energy for Image Segmentation&lt;/a&gt;, Chunming Li, Chiu-Yen Kao, John C. Gore, and Zhaohua Ding, &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2008. &lt;a href=&quot;http://www.imagecomputing.org/~cmli/RSF/&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website &amp;amp; code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[3] &lt;a href=&quot;&quot;&gt;Localizing Region Based Active Contours&lt;/a&gt;, Shawn Lankton, and Allen Tannenbaum, &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2008. &lt;a href=&quot;http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website &amp;amp; code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[4] &lt;a href=&quot;http://www.sciencedirect.com/science/article/pii/S0165168409000942&quot;&gt;Active Contours Driven by Local Gaussian Distribution Fitting Energy&lt;/a&gt;, Li Wang, Lei He, Arabinda Mishra, and Chunming Li, &lt;strong&gt;Signal Processing&lt;/strong&gt;, 2009. &lt;a href=&quot;http://www.unc.edu/~liwa/LGD_source_code.rar&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[5] &lt;a href=&quot;&quot;&gt;Active Contours Driven by Local Image Fitting Energy&lt;/a&gt;, Kaihua Zhang, Huihui Song, and Lei Zhang, &lt;strong&gt;Pattern Recognition&lt;/strong&gt;, 2010. &lt;a href=&quot;http://kaihuazhang.net/J_papers/PR_10.rar&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[6] &lt;a href=&quot;&quot;&gt;A Level Set Method for Image Segmentation in the Presence of Intensity Inhomogeneities with Application to MRI&lt;/a&gt;, Chunming Li, Rui Huang, Zhaohua Ding, J. Chris Gatenby, Dimitris N. Metaxas, and John C. Gore, &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2011. &lt;a href=&quot;http://www.engr.uconn.edu/~cmli/BiasCorrection/&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website &amp;amp; code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[7] &lt;a href=&quot;&quot;&gt;A Level Set Approach to Image Segmentation with Intensity Inhomogeneity&lt;/a&gt;, Kaihua Zhanga, Lei Zhanga, Kin-Man Lamb, and David Zhang, &lt;strong&gt;IEEE Trans on Cybernetics&lt;/strong&gt;, 2016. &lt;a href=&quot;http://www4.comp.polyu.edu.hk/~cslzhang/LSACM/LSACM.htm&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website &amp;amp; code&lt;/font&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;texture-descriptor&quot;&gt;Texture descriptor&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;[1] &lt;a href=&quot;http://ieeexplore.ieee.org/abstract/document/1211535/&quot;&gt;Active unsupervised texture segmentation on a diffusion based feature space&lt;/a&gt;, M. Rousson, T. Brox, and R. Deriche, &lt;strong&gt;IEEE CVPR&lt;/strong&gt;, 2003. (structure tensor).&lt;br /&gt;
+[2] &lt;a href=&quot;https://link.springer.com/article/10.1007%2Fs11263-009-0234-0&quot;&gt;Local Histogram Based Segmentation Using the Wasserstein Distance&lt;/a&gt;, Kangyu Ni, Xavier Bresson, Tony Chan, and Selim Esedoglu, &lt;strong&gt;International Journal of Computer Vision&lt;/strong&gt;, 2009. &lt;a href=&quot;https://raw.githubusercontent.com/xbresson/old_codes/master/codes_files/xbresson_2009_wasserstein.zip&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;code&lt;/font&gt;&lt;/a&gt; (local histogram).&lt;br /&gt;
+[3] &lt;a href=&quot;http://ieeexplore.ieee.org/document/6566192/&quot;&gt;Incorporating Patch Subspace Model in Mumford–Shah Type Active Contours&lt;/a&gt;, Junyan Wang, and Kap Luk Chan, &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2013. &lt;a href=&quot;https://www.dropbox.com/s/lb6toklp2mywrms/PatchSubspaceMumfordShah2013.rar?dl=0&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[4] &lt;a href=&quot;http://ieeexplore.ieee.org/document/6545332/&quot;&gt;Sparse Texture Active Contour&lt;/a&gt;, Yi Gao, Sylvain Bouix, Martha Shenton, and Allen Tannenbaum, &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2013.&lt;br /&gt;
+[5] &lt;a href=&quot;http://ieeexplore.ieee.org/abstract/document/6690136/&quot;&gt;Enhanced Decoupled Active Contour Using Structural and Textural Variation Energy Functionals&lt;/a&gt;, Dorothy Lui, Christian Scharfenberger, Khalil Fergani, Alexander Wong, and David A. Clausi, &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2014.
+&lt;a href=&quot;https://uwaterloo.ca/vision-image-processing-lab/research-demos/enhanced-decoupled-active-contour-using-structural-and&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website &amp;amp; code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[6] &lt;a href=&quot;http://www.sciencedirect.com/science/article/pii/S1077314214000770&quot;&gt;Hybrid Structural and Texture Distinctiveness Vector Field Convolution for Region Segmentation&lt;/a&gt;, K.Fergani, D.Lui, C.Scharfenberger, A.Wong, and D.A.Clausi, &lt;strong&gt;Computer Vision and Image Understanding&lt;/strong&gt;, 2014. &lt;a href=&quot;https://uwaterloo.ca/vision-image-processing-lab/research-demos/hybrid-structural-and-texture-distinctiveness-vector-field&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website&lt;/font&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;shape-based-models&quot;&gt;Shape-based Models&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;[1] &lt;a href=&quot;https://link.springer.com/article/10.1023/A%3A1020878408985&quot;&gt;Using Prior Shapes in Geometric Active Contours in a Variational Framework&lt;/a&gt;, Yunmei Chen, Hemant D. Tagare, Sheshadri Thiruvenkadam, Feng Huang, David Wilson, Kaundinya S. Gopinath, Richard W. Briggs, and Edward A. Geiser, &lt;strong&gt;International Journal of Computer Vision&lt;/strong&gt;, 2002.&lt;br /&gt;
+[2] &lt;a href=&quot;http://ieeexplore.ieee.org/abstract/document/1467575/&quot;&gt;Level Set Based Shape Prior Segmentation&lt;/a&gt;, Tony Chan, and Wei Zhu, &lt;strong&gt;IEEE CVPR&lt;/strong&gt;, 2005.&lt;br /&gt;
+[3] &lt;a href=&quot;https://link.springer.com/article/10.1007/s11263-006-6658-x&quot;&gt;A Variational Model for Object Segmentation Using Boundary Information and Shape Prior Driven by the Mumford-Shah Functional&lt;/a&gt;, Xavier Bresson, Pierre Vandergheynst, Jean-Philippe Thiran, &lt;strong&gt;International Journal of Computer Vision&lt;/strong&gt;, 2006. &lt;a href=&quot;https://raw.githubusercontent.com/xbresson/old_codes/master/codes_files/xbresson_2008_active_contour_shape_prior.zip&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;code&lt;/font&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;global-minimization-models&quot;&gt;Global Minimization Models&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;[1] &lt;a href=&quot;http://epubs.siam.org/doi/abs/10.1137/040615286&quot;&gt;Algorithms for finding global minimizers of image segmentation and denoising models&lt;/a&gt;, Tony F. Chan, Selim Esedoglu, and Mila Nikolova, &lt;strong&gt;SIAM Journal on Applied Mathematics&lt;/strong&gt;, 2006.&lt;br /&gt;
+[2] &lt;a href=&quot;https://link.springer.com/article/10.1007/s10851-007-0002-0&quot;&gt;Fast Global Minimization of the Active Contour/Snake Model&lt;/a&gt;, Xavier Bresson, Selim Esedoḡlu, Pierre Vandergheynst, Jean-Philippe Thiran, and Stanley Osher, &lt;strong&gt;Journal of Mathematical Imaging and Vision&lt;/strong&gt;, 2007. &lt;a href=&quot;https://raw.githubusercontent.com/xbresson/old_codes/master/codes_files/xbresson_2007_active_contour_global_minimizer.zip&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[3] &lt;a href=&quot;https://link.springer.com/article/10.1007/s10915-009-9331-z&quot;&gt;Geometric Applications of the Split Bregman Method: Segmentation and Surface Reconstruction&lt;/a&gt;, Tom Goldstein, Xavier Bresson, Stanley Osher, &lt;strong&gt;Journal of Scientific Computing&lt;/strong&gt;, 2010. &lt;a href=&quot;https://htmlpreview.github.io/?https://github.com/xbresson/old_codes/blob/master/codes.html&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;website &amp;amp; code&lt;/font&gt;&lt;/a&gt;.&lt;br /&gt;
+[4] &lt;a href=&quot;http://www.sciencedirect.com/science/article/pii/S1077314214000976&quot;&gt;Fast and globally convex multiphase active contours for brain MRI segmentation&lt;/a&gt;, Juan C. Moreno, V.B. Surya Prasath, Hugo Proença, and K. Palaniappan, &lt;strong&gt;Computer Vision and Image Understanding&lt;/strong&gt;, 2014. (Multi-Phase global minimization method).&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Mingqi Gao</name><email>im.mingqi@gmail.com</email></author><category term="list of papers" /><category term="active contour model" /><category term="level set method" /><category term="image segmentation" /><summary type="html">Here some well-designed and suggestive papers in the field of Active Contour Model for image segmentation are provided, organized according to all types of models, including learning-based models, edge-baesd models, region-based models, shape-prior-based models and globally-optimized models.</summary></entry><entry><title type="html">Introduction to Active Contour Model</title><link href="http://localhost:4000/posts/2016/12/blog-post-1/" rel="alternate" type="text/html" title="Introduction to Active Contour Model" /><published>2016-12-14T00:00:00-08:00</published><updated>2016-12-14T00:00:00-08:00</updated><id>http://localhost:4000/posts/2016/12/blog-post-1</id><content type="html" xml:base="http://localhost:4000/posts/2016/12/blog-post-1/">&lt;p&gt;Image Segmentation plays a significant role in the field of image analyzing, due to it can offer subsequent process accurate position of the region of interest (ROI). To solve this problem, several methods have been proposed, like clustering methods, graph-based methods and learning-based methods. Here, a  different model is introduced, named Active Contour Model, which segments the given image by iteratively evolving a smooth curve (active contour).&lt;/p&gt;
+
+&lt;h2 id=&quot;1-what-is-active-contour-model&quot;&gt;1. What is Active Contour Model&lt;/h2&gt;
+&lt;p&gt;Active Contour Model (ACM) is an iterative model for image segmentation, whose basic idea is that the object boundary is expressed as a close and smooth active contour, which can be obtained by evolving an initialized curve within the constraint of the given image information.&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/files/mdimages/post1_fig1_1.jpg&quot; width=&quot;24%&quot; /&gt;
+&lt;img src=&quot;/files/mdimages/post1_fig1_2.gif&quot; width=&quot;24%&quot; /&gt;
+&lt;img src=&quot;/files/mdimages/post1_fig1_3.jpg&quot; width=&quot;46.3%&quot; /&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Figure 1&lt;/strong&gt;. Segmentation result obtained using active contour model. &lt;strong&gt;Left&lt;/strong&gt;: the given image with initial contour (red circle); &lt;strong&gt;Middle&lt;/strong&gt;: the iterative segmentation process; &lt;strong&gt;Right&lt;/strong&gt;: locally enlarged segmentation result.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The figure above illustrates how active contour model works by taking an example of segmenting the image of Europe night-lights. It can be seen that after several iterations, the object in the given image is enclosed by the closed and smooth curve.&lt;/p&gt;
+
+&lt;p&gt;Up to now there have been a large number of published active contour models, which are mainly divided into 2 categories: Edge-based ACMs and Region-based ACMs according to the image information they use. 
+&lt;strong&gt;Edge-based models&lt;/strong&gt; are based on an assumption that the image information nears the object boundary changes sharply. In terms of &lt;strong&gt;Region-based models&lt;/strong&gt;, they utilize a certain region descriptor (like intensity, color or texture) to depict the image information of different regions, handling the motion of acitve contours by homogenizing the descriptors in each region.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-why-active-conours&quot;&gt;2. Why Active Conours&lt;/h2&gt;
+
+&lt;p&gt;Compared with other segmentation models, there are two main advantages ACMs have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In ACMs, the segmentation result of given image is encircled by closed and smooth curve, which is able to perfectly describe the object boundary and obtain sub-pixel segmentation accuracy.&lt;/li&gt;
+  &lt;li&gt;Generally, due to the evolving curve is implicitly expressed through level set function, making ACMs numerially stable during the iteration. In addition, the topological changes of objects to be segmented can be achieved.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3-chan-vese-model&quot;&gt;3. Chan-Vese Model&lt;/h2&gt;
+&lt;p&gt;In practice, there are few edge-based models that can achieve desired segmentation results, because of the presence of image noise and discontinuous boundaries with strong gradients in real scene. Thus region-based models have been widely studied so far. Here the region-based model is demonstrated by giving an example of a well-known and typical segmentation mehtod: Chan-Vese Model.&lt;/p&gt;
+
+&lt;p&gt;Before discussing the concrete form of Chan-Vese Model, we define subset \(\Omega  \subset {\mathbb{R}^2}\) as the image field, \({u_0}:\Omega  \to \mathbb{R}\) as the given image. Let \(C\) in \(\Omega\) express the evolving curve, as the boundary of the open subset \(\omega \subset \Omega \), and thus we can defind the region \(inside(C)\) and \(outside(C)\) as \(\omega\) and \(\Omega \backslash \omega \), respectively.&lt;/p&gt;
+
+&lt;h3 id=&quot;31-energy-functional-definition&quot;&gt;3.1 Energy functional definition&lt;/h3&gt;
+&lt;p&gt;In the model proposed by Chan and Vese, to generalize the segmentation problem, they assume that the given image is formed by 2 regions with homogeneous intensity. Thus \(u_0\) can be approximately expressed as: 
+\[{u_0}(x,y) = \begin{cases}
+    {u_0}^{obj}, &amp;amp; \text{if}\ (x,y) \in object\ region  \\&lt;br /&gt;
+    {u_0}^{bk}, &amp;amp; \text{if}\ (x,y) \in background\ region
+\end{cases}\]&lt;/p&gt;
+
+&lt;p&gt;Under this assumption, for the evolving curve \(C\) at any time, a fitting term can be solved to assess the macthing degree between \(C\) and real object boundary:
+\[\begin{align}
+			F_1(C)+F_2(C)&amp;amp;= \int_{inside(C)} {|{u_0}(x,y) - {c_1}{|^2}dxdy} \\&amp;amp;+  \int_{outside(C)} {|{u_0}(x,y) - {c_2}{|^2}dxdy}&lt;br /&gt;
+	\end{align}
+\]
+where \(c_1\), \(c_2\) are the average intensities of \(inside(C)\) and \(outside(C)\), respectively. From the formula above, it is clear that the value of \({F_1(C)+F_2(C)}\) reaches its minimum (\( \approx 0\))only when \(C\) converges to the object boundary.&lt;/p&gt;
+
+&lt;p&gt;Therefore, this model converted the problem of image segmentation into a minimization problem, in which the segmentation result can be achieved by iteratively evolving \(C\). In order to smooth the segmentation result, the regularized terms penalizing the length of \(C\) and the area of \(\omega\) have been considered and thus, the integrated energy functional is formulated as:
+\[ \begin{align}
+			\mathcal{F}^{CV}(c_1 ,{c_2},{C})&amp;amp;=\mu  \cdot Length(C) + \nu  \cdot Area(inside(C))\\&amp;amp;+  \lambda_1 \cdot \int_{inside(C)} {|{u_0}(x,y) - {c_1}{|^2}dxdy} \\&amp;amp;+  \lambda_2 \cdot \int_{outside(C)} {|{u_0}(x,y) - {c_2}{|^2}dxdy}
+					\end{align}
+\]
+where \(\mu\), \(\nu\), \(\lambda_1\) and \(\lambda_2\) are fixed parameters, to adjust the impact of each term on segmentation result.&lt;/p&gt;
+&lt;h3 id=&quot;32-level-set-method&quot;&gt;3.2 Level set method&lt;/h3&gt;
+&lt;p&gt;Compared with traditional parametric curve, due to the level set method that implicitly expresses active contour can make evolution process numerical stable, and also can handle topological changes more easily, it has been used in most ACMs. Let \(\phi: \Omega\to \mathbb{R}\) be the level set function, which is generally defined as the Signed Distance Function (SDF): 
+\[\phi(x,y) = \begin{cases}
+	0, &amp;amp; \text{if}\ (x,y) \in C\\&lt;br /&gt;
+   +d(x,y,C), &amp;amp; \text{if}\ (x,y) \in inside(C)  \\&lt;br /&gt;
+   -d(x,y,C), &amp;amp; \text{if}\ (x,y) \in outside(C)
+\end{cases}\]
+where \(d(x,y,C)\) is the shortest distance between \((x,y)\) and \(C\). The diagram of \(\phi\) is showed as follows:&lt;/p&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/files/mdimages/post1_fig2_1.jpg&quot; width=&quot;30%&quot; hspace=&quot;2.5%&quot; /&gt;
+&lt;img src=&quot;/files/mdimages/post1_fig2_2.jpg&quot; width=&quot;40%&quot; hspace=&quot;2.5%&quot; /&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Figure 2&lt;/strong&gt;. The example of the level set method. &lt;strong&gt;Left&lt;/strong&gt;:  The implicit representation of \(C\) (red circle) on domain \(\Omega\), which is divided into 2 regions according to \(\phi\); &lt;strong&gt;Right&lt;/strong&gt;: The 3D visualization of corresponding level set function \(\phi\).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To distinguish \(inside(C)\) and \(outside(C)\) in \(\Omega\), Heaviside function \(H(z)\) is integrated into the energy functional, defined as follow:
+\[H(z) = \begin{cases}
+	1, &amp;amp; \text{if}\ z \ge 0\\&lt;br /&gt;
+   0, &amp;amp; \text{if}\ z&amp;lt;0
+   \end{cases}, \  H’(z)=\delta(z)\]
+In Chan and Vese’s model, to facilitate the computation of Euler–Lagrange equations  of level set function \(\phi\), they consider slightly regularized versions of the functions \(H(z)\) and \(\delta(z)\), denoted by \({H_\varepsilon }(z)\) and \({\delta_\varepsilon }(z)\) &lt;strong&gt;&lt;sup&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;[1]&lt;/font&gt;&lt;/sup&gt;&lt;/strong&gt;. As a result, the final energy functional is formulated as:
+\[ \begin{align}
+\mathcal{F}^{CV}({c_1},{c_2},\phi )
+&amp;amp;=\mu \cdot \int_\Omega  {\delta_\varepsilon(\phi (x,y))|\nabla \phi (x,y)|dxdy} \\&lt;br /&gt;
+&amp;amp;+\nu \cdot \int_\Omega {H_\varepsilon(\phi (x,y))dxdy}\\&lt;br /&gt;
+&amp;amp;+\lambda_1 \cdot \int_\Omega{ { |{u_0}(x,y) - {c_1}{|^2} \cdot H_\varepsilon(\phi (x,y))}dxdy}\\&lt;br /&gt;
+&amp;amp;+\lambda_2 \cdot \int_\Omega{ { |{u_0}(x,y) - {c_2}{|^2} \cdot (1-H_\varepsilon(\phi (x,y)))}dxdy}
+					\end{align}
+\]
+With the energy functional, the \(\phi\) that implicitly represents the real object boundary can be solved by conducting gradient descent algorithm:
+\[{ \phi^{t+1} = {\phi^t} + \Delta{t} \cdot \frac{d{\phi^t}}{dt}}\]
+where:
+\[\begin{align}
+	\frac{ d{\phi^t}}{dt} &amp;amp;= -\frac{ {\partial { \mathcal{F}^{CV}}({c_1},{c_2},{\phi^t})}}{ {\partial {\phi^t}}}\\\ &amp;amp;=\delta_\varepsilon(\phi (x,y)) \cdot [\mu \cdot div(\frac{ {\nabla {\phi^t}}}{ {|\nabla {\phi^t}|}})-\nu-\lambda_1 \cdot (u_0-c_1)^2+\lambda_2 \cdot (u_0-c_2)^2]
+\end{align}\]
+and \(\phi^0\) is the level set function representing the initial contour.&lt;/p&gt;
+&lt;h3 id=&quot;33-code-available&quot;&gt;3.3 Code available&lt;/h3&gt;
+&lt;p&gt;The code of this model is provided &lt;a href=&quot;https://github.com/gaomingqi/Chan-Vese-model&quot;&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;here&lt;/font&gt;&lt;/a&gt;. In traditional Chan-Vese model, to prevent \(\phi\) from losing its nature  as a SDF during the minimization process, a re-initialization is needed. This process, however, is time-consuming and in turn to decrease the segmentation efficiency. To cope with this problem, I made some improvements to the iteration process by integrating an additional term proposed by Chunming Li et al. &lt;sup&gt;&lt;strong&gt;&lt;font color=&quot;#ffaa0a&quot;&gt;[2]&lt;/font&gt;&lt;/strong&gt;&lt;/sup&gt;: 
+\[\mathcal {P}(\phi ) = \int_\Omega  {\frac{1}{2}{ {(|\nabla \phi (x,y)| - 1)}^2}dxdy} \]
+From the term above, it is clear that the point that its gradient is larger than 1 will be penalized during the evolution process. Thus the subsequent re-initialization can be eliminated.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NOTE&lt;/code&gt;: To use it as academic purpose, please cite the following papers:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;[1] &lt;a href=&quot;http://ieeexplore.ieee.org/abstract/document/902291/&quot;&gt;Active Contours Without Edges&lt;/a&gt;, Tony F. Chan and Luminita A. Vese. &lt;strong&gt;IEEE Trans on Image Processing&lt;/strong&gt;, 2001.&lt;br /&gt;
+[2] &lt;a href=&quot;http://ieeexplore.ieee.org/document/1467299/&quot;&gt;Level Set Evolution Without Re-initialization: A New Variational Formulation&lt;/a&gt;, Chunming Li, Chenyang Xu, Changfeng Gui, and Martin D. Fox. &lt;strong&gt;IEEE CVPR&lt;/strong&gt;, 2005.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Mingqi Gao</name><email>im.mingqi@gmail.com</email></author><category term="image segmentation" /><category term="active contour model" /><category term="level set method" /><category term="chan-vese model" /><summary type="html">Image Segmentation plays a significant role in the field of image analyzing, due to it can offer subsequent process accurate position of the region of interest (ROI). To solve this problem, several methods have been proposed, like clustering methods, graph-based methods and learning-based methods. Here, a different model is introduced, named Active Contour Model, which segments the given image by iteratively evolving a smooth curve (active contour).</summary></entry></feed>

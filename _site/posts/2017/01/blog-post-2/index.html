@@ -1,0 +1,501 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>List of papers related to Active Contour Models - Mingqi’s Home</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Mingqi's Home">
+<meta property="og:title" content="List of papers related to Active Contour Models">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2017/01/blog-post-2/">
+  <meta property="og:url" content="http://localhost:4000/posts/2017/01/blog-post-2/">
+
+
+
+  <meta property="og:description" content="Here some well-designed and suggestive papers in the field of Active Contour Model for image segmentation are provided, organized according to all types of models, including learning-based models, edge-baesd models, region-based models, shape-prior-based models and globally-optimized models.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-01-02T00:00:00-08:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "http://localhost:4000/images/icon.png"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Mingqi Gao",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Mingqi's Home Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  tex2jax: {
+	    inlineMath: [ ['$','$'], ['\\(','\\)'] ], 
+	    displayMath: [ ['$$','$$'], ['\\[','\\]'] ], 
+	    skipTags: ["script","noscript","style","textarea","pre","code"]
+	  }
+	});
+</script>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<style>
+.clustrmapcls{ width:214px; height:120px; margin:50px;} 
+</style>
+
+
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Mingqi's Home</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Blog Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/files/MingqiGao_CV.pdf">CV</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <div class="image-wrap">
+    <img src='banner.png' onerror="this.style.display='none'" />
+    </div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/profile.png" class="author__avatar" alt="Mingqi Gao">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Mingqi Gao</h3>
+    <p class="author__bio">Research student at Chongqing University</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Chongqing, China</li>
+      
+      
+      
+      
+        <li><a href="mailto:im.mingqi@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://github.com/gaomingqi"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=ECCd0hwAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="List of papers related to Active Contour Models">
+    <meta itemprop="description" content="Here some well-designed and suggestive papers in the field of Active Contour Model for image segmentation are provided, organized according to all types of models, including learning-based models, edge-baesd models, region-based models, shape-prior-based models and globally-optimized models.">
+    <meta itemprop="datePublished" content="January 02, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">List of papers related to Active Contour Models
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  4 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-02T00:00:00-08:00">January 02, 2017</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Here some well-designed and suggestive papers in the field of Active Contour Model for image segmentation are provided, organized according to <strong>all types of models</strong>, including learning-based models, edge-baesd models, region-based models, shape-prior-based models and globally-optimized models.</p>
+
+<h2 id="learning-based-models">Learning-based Models</h2>
+<blockquote>
+  <p>[1] <a href="http://ieeexplore.ieee.org/document/8099548/">Deep Level Sets for Salient Object Detection</a>, Ping Hu, Bing Shuai, Jun Liu, and Gang Wang, <strong>IEEE CVPR</strong>, 2017.<br />
+[2] <a href="https://arxiv.org/abs/1607.05074">Deep Active Contours</a>, Christian Rupprecht, Elizabeth Huaroc, Maximilian Baust, and Nassir Navab, <strong>arXiv preprint arXiv:1607.05074</strong>, 2016.</p>
+</blockquote>
+
+<h2 id="edge-based-models">Edge-based Models</h2>
+<blockquote>
+  <p>[1] <a href="http://ieeexplore.ieee.org/abstract/document/5557813/">Distance Regularized Level Set Evolution and Its Application to Image Segmentation</a>, Chunming Li, Chenyang Xu, Changfeng Gui, and Martin D. Fox, <strong>IEEE Trans on Image Processing</strong>, 2010. <a href="http://www.imagecomputing.org/~cmli/DRLSE/"><font color="#ffaa0a">website &amp; code</font></a>.<br />
+[2] <a href="http://ieeexplore.ieee.org/document/5439007/">Decoupled Active Contour (DAC) for Boundary Detection</a>, Akshaya K. Mishra, Paul W. Fieguth, and David A. Clausi, <strong>IEEE Transactions on Pattern Analysis and Machine Intelligence</strong>, 2011. <a href="https://uwaterloo.ca/vision-image-processing-lab/research-demos/decoupled-active-contours"><font color="#ffaa0a">website</font></a>.</p>
+
+</blockquote>
+
+<h2 id="region-based-models">Region-based Models</h2>
+<h3 id="intensity-descriptor">Intensity descriptor</h3>
+<blockquote>
+  <p>[1] <a href="http://ieeexplore.ieee.org/abstract/document/902291/">Active Contours Without Edges</a>, Tony F. Chan, and Luminita A. Vese, <strong>IEEE Trans on Image Processing</strong>, 2001.<a href="https://gaomingqi.github.io/posts/2016/12/blog-post-1/"><font color="#ffaa0a">website &amp; code</font></a>.<br />
+[2] <a href="http://ieeexplore.ieee.org/document/4623242/">Minimization of Region-Scalable Fitting Energy for Image Segmentation</a>, Chunming Li, Chiu-Yen Kao, John C. Gore, and Zhaohua Ding, <strong>IEEE Trans on Image Processing</strong>, 2008. <a href="http://www.imagecomputing.org/~cmli/RSF/"><font color="#ffaa0a">website &amp; code</font></a>.<br />
+[3] <a href="">Localizing Region Based Active Contours</a>, Shawn Lankton, and Allen Tannenbaum, <strong>IEEE Trans on Image Processing</strong>, 2008. <a href="http://www.shawnlankton.com/2008/04/active-contour-matlab-code-demo/"><font color="#ffaa0a">website &amp; code</font></a>.<br />
+[4] <a href="http://www.sciencedirect.com/science/article/pii/S0165168409000942">Active Contours Driven by Local Gaussian Distribution Fitting Energy</a>, Li Wang, Lei He, Arabinda Mishra, and Chunming Li, <strong>Signal Processing</strong>, 2009. <a href="http://www.unc.edu/~liwa/LGD_source_code.rar"><font color="#ffaa0a">code</font></a>.<br />
+[5] <a href="">Active Contours Driven by Local Image Fitting Energy</a>, Kaihua Zhang, Huihui Song, and Lei Zhang, <strong>Pattern Recognition</strong>, 2010. <a href="http://kaihuazhang.net/J_papers/PR_10.rar"><font color="#ffaa0a">code</font></a>.<br />
+[6] <a href="">A Level Set Method for Image Segmentation in the Presence of Intensity Inhomogeneities with Application to MRI</a>, Chunming Li, Rui Huang, Zhaohua Ding, J. Chris Gatenby, Dimitris N. Metaxas, and John C. Gore, <strong>IEEE Trans on Image Processing</strong>, 2011. <a href="http://www.engr.uconn.edu/~cmli/BiasCorrection/"><font color="#ffaa0a">website &amp; code</font></a>.<br />
+[7] <a href="">A Level Set Approach to Image Segmentation with Intensity Inhomogeneity</a>, Kaihua Zhanga, Lei Zhanga, Kin-Man Lamb, and David Zhang, <strong>IEEE Trans on Cybernetics</strong>, 2016. <a href="http://www4.comp.polyu.edu.hk/~cslzhang/LSACM/LSACM.htm"><font color="#ffaa0a">website &amp; code</font></a>.</p>
+</blockquote>
+
+<h3 id="texture-descriptor">Texture descriptor</h3>
+<blockquote>
+  <p>[1] <a href="http://ieeexplore.ieee.org/abstract/document/1211535/">Active unsupervised texture segmentation on a diffusion based feature space</a>, M. Rousson, T. Brox, and R. Deriche, <strong>IEEE CVPR</strong>, 2003. (structure tensor).<br />
+[2] <a href="https://link.springer.com/article/10.1007%2Fs11263-009-0234-0">Local Histogram Based Segmentation Using the Wasserstein Distance</a>, Kangyu Ni, Xavier Bresson, Tony Chan, and Selim Esedoglu, <strong>International Journal of Computer Vision</strong>, 2009. <a href="https://raw.githubusercontent.com/xbresson/old_codes/master/codes_files/xbresson_2009_wasserstein.zip"><font color="#ffaa0a">code</font></a> (local histogram).<br />
+[3] <a href="http://ieeexplore.ieee.org/document/6566192/">Incorporating Patch Subspace Model in Mumford–Shah Type Active Contours</a>, Junyan Wang, and Kap Luk Chan, <strong>IEEE Trans on Image Processing</strong>, 2013. <a href="https://www.dropbox.com/s/lb6toklp2mywrms/PatchSubspaceMumfordShah2013.rar?dl=0"><font color="#ffaa0a">code</font></a>.<br />
+[4] <a href="http://ieeexplore.ieee.org/document/6545332/">Sparse Texture Active Contour</a>, Yi Gao, Sylvain Bouix, Martha Shenton, and Allen Tannenbaum, <strong>IEEE Trans on Image Processing</strong>, 2013.<br />
+[5] <a href="http://ieeexplore.ieee.org/abstract/document/6690136/">Enhanced Decoupled Active Contour Using Structural and Textural Variation Energy Functionals</a>, Dorothy Lui, Christian Scharfenberger, Khalil Fergani, Alexander Wong, and David A. Clausi, <strong>IEEE Trans on Image Processing</strong>, 2014.
+<a href="https://uwaterloo.ca/vision-image-processing-lab/research-demos/enhanced-decoupled-active-contour-using-structural-and"><font color="#ffaa0a">website &amp; code</font></a>.<br />
+[6] <a href="http://www.sciencedirect.com/science/article/pii/S1077314214000770">Hybrid Structural and Texture Distinctiveness Vector Field Convolution for Region Segmentation</a>, K.Fergani, D.Lui, C.Scharfenberger, A.Wong, and D.A.Clausi, <strong>Computer Vision and Image Understanding</strong>, 2014. <a href="https://uwaterloo.ca/vision-image-processing-lab/research-demos/hybrid-structural-and-texture-distinctiveness-vector-field"><font color="#ffaa0a">website</font></a>.</p>
+</blockquote>
+
+<h2 id="shape-based-models">Shape-based Models</h2>
+<blockquote>
+  <p>[1] <a href="https://link.springer.com/article/10.1023/A%3A1020878408985">Using Prior Shapes in Geometric Active Contours in a Variational Framework</a>, Yunmei Chen, Hemant D. Tagare, Sheshadri Thiruvenkadam, Feng Huang, David Wilson, Kaundinya S. Gopinath, Richard W. Briggs, and Edward A. Geiser, <strong>International Journal of Computer Vision</strong>, 2002.<br />
+[2] <a href="http://ieeexplore.ieee.org/abstract/document/1467575/">Level Set Based Shape Prior Segmentation</a>, Tony Chan, and Wei Zhu, <strong>IEEE CVPR</strong>, 2005.<br />
+[3] <a href="https://link.springer.com/article/10.1007/s11263-006-6658-x">A Variational Model for Object Segmentation Using Boundary Information and Shape Prior Driven by the Mumford-Shah Functional</a>, Xavier Bresson, Pierre Vandergheynst, Jean-Philippe Thiran, <strong>International Journal of Computer Vision</strong>, 2006. <a href="https://raw.githubusercontent.com/xbresson/old_codes/master/codes_files/xbresson_2008_active_contour_shape_prior.zip"><font color="#ffaa0a">code</font></a>.</p>
+</blockquote>
+
+<h2 id="global-minimization-models">Global Minimization Models</h2>
+<blockquote>
+  <p>[1] <a href="http://epubs.siam.org/doi/abs/10.1137/040615286">Algorithms for finding global minimizers of image segmentation and denoising models</a>, Tony F. Chan, Selim Esedoglu, and Mila Nikolova, <strong>SIAM Journal on Applied Mathematics</strong>, 2006.<br />
+[2] <a href="https://link.springer.com/article/10.1007/s10851-007-0002-0">Fast Global Minimization of the Active Contour/Snake Model</a>, Xavier Bresson, Selim Esedoḡlu, Pierre Vandergheynst, Jean-Philippe Thiran, and Stanley Osher, <strong>Journal of Mathematical Imaging and Vision</strong>, 2007. <a href="https://raw.githubusercontent.com/xbresson/old_codes/master/codes_files/xbresson_2007_active_contour_global_minimizer.zip"><font color="#ffaa0a">code</font></a>.<br />
+[3] <a href="https://link.springer.com/article/10.1007/s10915-009-9331-z">Geometric Applications of the Split Bregman Method: Segmentation and Surface Reconstruction</a>, Tom Goldstein, Xavier Bresson, Stanley Osher, <strong>Journal of Scientific Computing</strong>, 2010. <a href="https://htmlpreview.github.io/?https://github.com/xbresson/old_codes/blob/master/codes.html"><font color="#ffaa0a">website &amp; code</font></a>.<br />
+[4] <a href="http://www.sciencedirect.com/science/article/pii/S1077314214000976">Fast and globally convex multiphase active contours for brain MRI segmentation</a>, Juan C. Moreno, V.B. Surya Prasath, Hugo Proença, and K. Palaniappan, <strong>Computer Vision and Image Understanding</strong>, 2014. (Multi-Phase global minimization method).</p>
+</blockquote>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#active-contour-model" class="page__taxonomy-item" rel="tag">active contour model</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#image-segmentation" class="page__taxonomy-item" rel="tag">image segmentation</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#level-set-method" class="page__taxonomy-item" rel="tag">level set method</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#list-of-papers" class="page__taxonomy-item" rel="tag">list of papers</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2017/01/blog-post-2/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2017/01/blog-post-2/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/posts/2017/01/blog-post-2/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2017/01/blog-post-2/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/posts/2016/12/blog-post-1/" class="pagination--pager" title="Introduction to Active Contour Model
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/posts/2017/04/blog-post-3/" class="pagination--pager" title="Factorization based Active Contour Model (FACM)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    </script>
+
+    <div class="page__footer"; align="center">
+      <footer>
+        <!-- start custom footer snippets -->
+<!--<a href="/sitemap/">Sitemap</a> -->
+<!-- end custom footer snippets -->
+<div class="clustrmapcls">
+  <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=m&d=PG6SqL69el2NYVabry2LnZgRgUHatJK733SrSv0_zOE"></script>
+</div>
+
+        
+<!--
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/gaomingqi"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+-->
+<!--<div class="clustrmapcls">
+  <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=n&d=PG6SqL69el2NYVabry2LnZgRgUHatJK733SrSv0_zOE"></script>
+</div>
+-->
+
+<div class="page__footer-copyright"; align="center">&copy; 2018 Mingqi Gao. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+</div>
+
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-116082359-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>
+
