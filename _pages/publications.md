@@ -33,6 +33,6 @@ author_profile: true
 4. [A variational approach to liver segmentation using statistics from multiple sources](http://iopscience.iop.org/article/10.1088/1361-6560/aaa360/meta)  
   Shenhai Zheng, Bin Fang, Laquan Li, __Mingqi Gao__, Yi Wang  
   __Physics in Medicine & Biology__, 2018.
-5. <font color="#56adc6">Feature Fusion and Active Contour based Texture Segmentation using Non-Negative Matrix Factorization</font>  
+5. <font color="#56adc6">Feature Fusion and Non-Negative Matrix Factorization based Active Contours for Texture Segmentation</font>  
   __Mingqi Gao__, Hengxin Chen, Shenhai Zheng, Bin Fang   
-  Submit to __Neurocomputing__.
+  Submit to __Signal Processing__, 2018.
