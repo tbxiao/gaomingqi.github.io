@@ -171,7 +171,7 @@
             <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Blog Posts</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Research Blog</a></li>
           
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/files/MingqiGao_CV.pdf">CV</a></li>
@@ -212,7 +212,7 @@
 
   <div class="author__content">
     <h3 class="author__name">Mingqi Gao</h3>
-    <p class="author__bio">Research student at Chongqing University</p>
+    <p class="author__bio">Research student @ Chongqing University</p>
   </div>
 
   <div class="author__urls-wrapper">
@@ -300,17 +300,17 @@
         <p>As a sub-problem of image segmentation, texture segmentation also has important research significance. In this blog, the idea of factorization based active contour model (FACM) is provided. Different with other ACMs, Here we integrated a new metric into the energy functional, which can assess the probability that a pixel belongs to each component region more accurately.</p>
 
 <h2 id="method">Method</h2>
-<p>FACM consists of two terms: a factorization based fitting energy \({\varepsilon _F}\) for distinguishing object and background, and a regularization term \({\varepsilon _R}\) <sup><strong><font color="#ffaa0a">[1]</font></strong></sup> to eliminating re-initialization process. The main procedures of this model are shown as below:</p>
+<p>FACM consists of two terms: a factorization based fitting energy \({\varepsilon _F}\) for distinguishing object and background, and a regularization term \({\varepsilon _R}\) <sup><strong><font color="#ffaa0a">[1]</font></strong></sup> for eliminating re-initialization process. The main procedure of this model are shown as below:</p>
 
 <div align="center">
 <img src="/files/mdimages/post3_fig1.jpg" width="99%" />
 </div>
 
 <blockquote>
-  <p><strong>Figure 1</strong>. The diagram of FACM. During the preliminary stage, the feature matrix is achieved to improve the separability of each region, by mixing serveral kinds of texture features. And then, an initial contour will be given to start the segmentation process. By computing the representative features of each region and their weights at each pixel, the active contour is updated repeatedly until convergence.</p>
+  <p><strong>Figure 1</strong>. The diagram of FACM. Firstly, the feature matrix is computed over the input image, in which different kinds of texture features are mixed to improve the separability of each region. And then, an initial contour will be given to start the segmentation process. By computing the representative features of each region and their weights at each pixel, the active contour is updated repeatedly until convergence.</p>
 </blockquote>
 
-<p>To describe the texture information of given image more accurately, we compute the local spectral histogram <sup><strong><font color="#ffaa0a">[2]</font></strong></sup> from the given image  \(u_0:\Omega \to \mathbb{R}\). Firstly, a set of feature maps will be computed from \(u_0\) through convolution. And then, for each pixel \((x,y) \in \Omega\), its spectral histogram is obtained by concatenating several histograms computed within \(w\times w\) window in each feature map:</p>
+<p>To describe the texture information of input image more accurately, we compute the local spectral histogram <sup><strong><font color="#ffaa0a">[2]</font></strong></sup> from the input image  \(u_0:\Omega \to \mathbb{R}\). Firstly, a set of feature maps will be computed from \(u_0\) through convolution. And then, for each pixel \((x,y) \in \Omega\), its spectral histogram is obtained by concatenating several histograms computed over a \(w\times w\) window in each feature map:</p>
 
 <script type="math/tex; mode=display">\boldsymbol{h} _{w}(x,y)= \left[\  \boldsymbol{h} _{w,1}(x,y)^T \right.,\boldsymbol{h} _{w,2}(x,y)^T,\text{...}\left. {,\boldsymbol{h} _{w,K}(x,y)^T} \right]^T</script>
 
@@ -352,10 +352,10 @@
 <img src="/files/mdimages/post3_fig23.gif" width="32%" />
 </div>
 <blockquote>
-  <p><strong>Figure 2</strong>. The evolution process of FACM. From left to right: the active contours in different stages when segmenting images with noise, inhomogeneous illumination and complex textures.</p>
+  <p><strong>Figure 2</strong>. The segmentation process of FACM. From left to right: the active contours in different stages when segmenting images with noise, inhomogeneous illumination and complex textures.</p>
 </blockquote>
 
-<p>From the segmentation process shown above, it is clear that the object boundary can be achieved within very limited iterations, which is mainly attributed to the rich texture features and factorization-based fitting term.</p>
+<p>From the segmentation results shown above, it is clear that the object boundary can be achieved within very limited iterations, which is mainly attributed to the rich texture features and factorization-based fitting term.</p>
 
 <h2 id="code-available">Code available</h2>
 <p>The code of FACM for texture segmentation is provided <a href="https://github.com/gaomingqi/FACM"><font color="#ffaa0a">here</font></a>.</p>
